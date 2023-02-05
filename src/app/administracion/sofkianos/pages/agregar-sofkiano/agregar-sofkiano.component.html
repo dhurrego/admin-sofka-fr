@@ -1,0 +1,77 @@
+<h1>{{titulo}}</h1>
+<mat-divider></mat-divider>
+
+<form class="mt-5" [formGroup]="form" (ngSubmit)="guardarOActualizarSofkiano()" autocomplete="off">
+    <div class="row">
+        <div class="col-md-6">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Tipo identificación</mat-label>
+                <mat-select formControlName="tipoIdentificacion">
+                    <mat-option value="CC">Cédula ciudadania</mat-option>
+                    <mat-option value="CE">Cédula extranjeria</mat-option>
+                    <mat-option value="TI">Tarjeta de identidad</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('tipoIdentificacion')?.invalid">{{ obtenerMensajeError('tipoIdentificacion') }}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Número Identificación</mat-label>
+                <input matInput placeholder="Ingrese el número de identificación" formControlName="numeroIdentificacion">
+                <mat-error *ngIf="form.get('numeroIdentificacion')?.invalid">{{ obtenerMensajeError('numeroIdentificacion') }}</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Primer nombre</mat-label>
+                <input matInput placeholder="Ingrese el primer nombre" formControlName="primerNombre">
+                <mat-error *ngIf="form.get('primerNombre')?.invalid">{{ obtenerMensajeError('primerNombre') }}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Segundo nombre</mat-label>
+                <input matInput placeholder="Ingrese el segundo nombre" formControlName="segundoNombre">
+                <mat-error *ngIf="form.get('segundoNombre')?.invalid">{{ obtenerMensajeError('segundoNombre') }}</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Primer apellido</mat-label>
+                <input matInput placeholder="Ingrese el primer apellido" formControlName="primerApellido">
+                <mat-error *ngIf="form.get('primerApellido')?.invalid">{{ obtenerMensajeError('primerApellido') }}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Segundo apellido</mat-label>
+                <input matInput placeholder="Ingrese el segundo apellido" formControlName="segundoApellido">
+                <mat-error *ngIf="form.get('segundoApellido')?.invalid">{{ obtenerMensajeError('segundoApellido') }}</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Dirección</mat-label>
+                <input matInput placeholder="Ingrese la dirección" formControlName="direccion">
+                <mat-error *ngIf="form.get('direccion')?.invalid">{{ obtenerMensajeError('direccion') }}</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6"></div>
+        <div class="col-md-6 d-flex justify-content-end">
+            <button type="submit" mat-raised-button color="primary" class="mx-3" [disabled]="form.invalid">
+                {{ titulo }}
+            </button>
+            <a mat-raised-button routerLink="/administracion/sofkianos">
+                Cancelar
+            </a>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,74 @@
+<h1>Listado de Sofkianos</h1>
+<mat-divider></mat-divider>
+
+<div class="contenedor-botones mt-3 d-flex justify-content-end">
+    <a mat-raised-button color="primary" class="boton-agregar" routerLink="./agregar">
+      Agregar
+    </a>
+</div>
+
+<mat-form-field class="w-100">
+    <mat-label>Filtrar</mat-label>
+    <input matInput (keyup)="aplicarFiltro($event)" placeholder="Filtrar" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="dni">
+            <th mat-header-cell *matHeaderCellDef> DNI </th>
+            <td mat-cell *matCellDef="let sofkiano"> {{sofkiano.dni}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let sofkiano"> {{sofkiano.nombreCompleto | titlecase}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="direccion">
+            <th mat-header-cell *matHeaderCellDef> Dirección </th>
+            <td mat-cell *matCellDef="let sofkiano"> {{sofkiano.direccion | uppercase }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let sofkiano"> {{sofkiano.estado}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cliente">
+            <th mat-header-cell *matHeaderCellDef> Cliente </th>
+            <td mat-cell *matCellDef="let sofkiano"> {{sofkiano.cliente | uppercase}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let sofkiano">
+                <button mat-icon-button matTooltip="Editar" [routerLink]="['./editar', sofkiano.dni ]" *ngIf="sofkiano.estado == 'ACTIVO'">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Inactivar" (click)="inactivarSofkiano(sofkiano.dni)" *ngIf="sofkiano.estado == 'ACTIVO'">
+                    <mat-icon>toggle_on</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Activar" (click)="activarSofkiano(sofkiano.dni)" *ngIf="sofkiano.estado == 'INACTIVO'">
+                    <mat-icon>toggle_off</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Asignar cliente" (click)="realizarAsignacion(sofkiano.dni)" *ngIf="sofkiano.estado == 'ACTIVO'">
+                    <mat-icon>person_add</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Retirar asignación" (click)="retirarAsignacion(sofkiano.dni)" *ngIf="sofkiano.estado == 'ACTIVO' && sofkiano.cliente != 'SIN ASIGNACIÓN'">
+                    <mat-icon>person_remove</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+    </mat-paginator>
+</div>
+
+<div class="d-flex justify-content-center mt-5">
+    <mat-spinner *ngIf="cargando"></mat-spinner>
+</div>

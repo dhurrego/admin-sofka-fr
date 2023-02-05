@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+}
+
+.contenedor-botones {
+    padding-bottom: 16px;
+}
+
+.boton-agregar+.boton-agregar {
+    margin-left: 8px;
+    float: right;
+}
