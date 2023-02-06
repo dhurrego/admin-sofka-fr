@@ -3,11 +3,11 @@ name: Azure Static Web Apps CI/CD
 pr:
   branches:
     include:
-      - feature/develop
+      - develop
 trigger:
   branches:
     include:
-      - feature/develop
+      - develop
 
 jobs:
 - job: build_and_deploy_job
