@@ -13,3 +13,7 @@ Se debe ejecutar el pipeline llamado admin-sofka-fr el cual se encargará de com
 ## Pruebas de cobertura
 
 ![Cobertura](https://res.cloudinary.com/dn4mmllzs/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1675658844/sofka/Cobertura_Front_quifcm.jpg)
+
+## URL Front
+
+La URL donde se encuentra desplegada la aplicación es: https://orange-cliff-050d43f0f.2.azurestaticapps.net
