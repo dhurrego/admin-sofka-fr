@@ -11,7 +11,7 @@ import { ClienteDTO } from '../interfaces/clientedto';
   providedIn: 'root'
 })
 export class ClientesService {
-  private _baseUrl: string = `${environment.baseUrl}/clientes`;
+  private _baseUrl: string = `${environment.baseUrl}/personas/clientes`;
 
   constructor(private _http: HttpClient) { }
 

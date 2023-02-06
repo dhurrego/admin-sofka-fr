@@ -13,7 +13,7 @@ import { SofkianoDTO } from '../interfaces/sofkianodto';
 })
 export class SofkianosService {
 
-  private _baseUrl: string = `${environment.baseUrl}/sofkianos`;
+  private _baseUrl: string = `${environment.baseUrl}/personas/sofkianos`;
 
   constructor(private _http: HttpClient) { }
 
