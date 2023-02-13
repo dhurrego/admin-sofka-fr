@@ -33,6 +33,14 @@
           <mat-icon>menu</mat-icon>
         </button>
         <span>Administración sofkianos</span>
+        <span class="spacer"></span>
+        <button mat-icon-button matTooltip="Registrar usuario" routerLink="/administracion/usuarios/registrar">
+            <mat-icon>manage_accounts</mat-icon>
+        </button>
+        <button mat-button (click)="cerrarSesion()">
+            Cerrar sesión
+            <mat-icon>logout</mat-icon>
+        </button>
     </mat-toolbar>
     <div class="container mt-3">
         <router-outlet></router-outlet>

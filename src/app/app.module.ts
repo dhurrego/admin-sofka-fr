@@ -12,6 +12,12 @@ import { ModalConfirmacionComponent } from './shared/components/modal-confirmaci
 import { ModalConSelectComponent } from './shared/components/modal-con-select/modal-con-select.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServerErrorInterceptorService } from './shared/services/interceptor/server-error-interceptor.service';
+import { JwtModule } from '@auth0/angular-jwt';
+import { environment } from '../environments/environment';
+
+export function tokenGetter() {
+  return localStorage.getItem(environment.TOKEN_NAME)?.substring(7) || '';
+}
 
 @NgModule({
   declarations: [
@@ -26,7 +32,14 @@ import { ServerErrorInterceptorService } from './shared/services/interceptor/ser
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [environment.DOMAIN],
+        disallowedRoutes: [`${environment.baseUrl}/seguridad/acceder`]
+      },
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptorService, multi: true }
