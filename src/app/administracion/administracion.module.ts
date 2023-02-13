@@ -16,6 +16,7 @@ import { AgregarClienteComponent } from './clientes/pages/agregar-cliente/agrega
 import { AsignacionSofkianosComponent } from './dashboard/components/asignacion-sofkianos/asignacion-sofkianos.component';
 import { CambiosEstadosSofkianosComponent } from './dashboard/components/cambios-estados-sofkianos/cambios-estados-sofkianos.component';
 import { CambiosAsignacionesComponent } from './dashboard/components/cambios-asignaciones/cambios-asignaciones.component';
+import { AgregarUsuarioComponent } from './usuarios/pages/agregar-usuario/agregar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CambiosAsignacionesComponent } from './dashboard/components/cambios-asi
     AgregarClienteComponent,
     AsignacionSofkianosComponent,
     CambiosEstadosSofkianosComponent,
-    CambiosAsignacionesComponent
+    CambiosAsignacionesComponent,
+    AgregarUsuarioComponent
   ],
   imports: [
     AdministracionRoutingModule,
